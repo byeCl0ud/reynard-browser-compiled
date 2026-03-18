@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: macos-latest
     outputs:
       artifact: ${{ steps.upload-artifact.outputs.artifact }}
     steps:
