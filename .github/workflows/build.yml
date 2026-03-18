@@ -51,18 +51,6 @@ jobs:
         run: ./tools/release/build-app.sh
         continue-on-error: true
         
-      - name: Disable LLD for Gecko
-        run: |
-          cat <<EOF > engine/firefox/.mozconfig
-          ac_add_options --disable-lld
-          EOF
-          
-      - name: Show mozconfig
-        run: cat engine/firefox/.mozconfig   
-        
-      - name: Build the app
-        run: ./tools/release/build-app.sh
-        
       - name: Create .ipa file
         run: ./tools/release/create-ipa.sh
 
