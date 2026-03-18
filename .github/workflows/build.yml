@@ -43,7 +43,13 @@ jobs:
 
       - name: Apply Gecko patches
         run: ./tools/development/apply-patches.sh
-
+        
+      - name: Disable LLD for Gecko
+        run: |
+          cat <<EOF > engine/firefox/.mozconfig
+          ac_add_options --disable-lld
+          EOF
+          
       - name: Build idevice
         run: ./tools/development/build-idevice.sh
 
