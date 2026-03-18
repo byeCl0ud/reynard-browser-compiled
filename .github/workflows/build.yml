@@ -44,6 +44,12 @@ jobs:
       - name: Apply Gecko patches
         run: ./tools/development/apply-patches.sh
         
+      - name: Build idevice
+        run: ./tools/development/build-idevice.sh
+
+      - name: Build the app
+        run: ./tools/release/build-app.sh
+        
       - name: Disable LLD for Gecko
         run: |
           cat <<EOF > engine/firefox/.mozconfig
@@ -51,14 +57,11 @@ jobs:
           EOF
           
       - name: Show mozconfig
-        run: cat engine/firefox/.mozconfig    
-         
-      - name: Build idevice
-        run: ./tools/development/build-idevice.sh
-
+        run: cat engine/firefox/.mozconfig   
+        
       - name: Build the app
         run: ./tools/release/build-app.sh
-
+        
       - name: Create .ipa file
         run: ./tools/release/create-ipa.sh
 
