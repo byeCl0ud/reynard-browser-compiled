@@ -50,6 +50,9 @@ jobs:
           ac_add_options --disable-lld
           EOF
           
+      - name: Show mozconfig
+        run: cat engine/firefox/.mozconfig    
+         
       - name: Build idevice
         run: ./tools/development/build-idevice.sh
 
