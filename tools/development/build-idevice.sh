@@ -24,10 +24,14 @@ if ! rustup target list | grep -q "^$RUST_TARGET (installed)"; then
 fi
 
 export IPHONEOS_DEPLOYMENT_TARGET="$DEPLOYMENT_TARGET"
+export CC=clang
+export AR=ar
+export CARGO_TARGET_AARCH64_APPLE_IOS_LINKER=clang
+
 if [ -n "${RUSTFLAGS:-}" ]; then
-  export RUSTFLAGS="${RUSTFLAGS} -C link-arg=${DEPLOYMENT_FLAG}"
+  export RUSTFLAGS="${RUSTFLAGS} -C linker=clang -C link-arg=${DEPLOYMENT_FLAG}"
 else
-  export RUSTFLAGS="-C link-arg=${DEPLOYMENT_FLAG}"
+  export RUSTFLAGS="-C linker=clang -C link-arg=${DEPLOYMENT_FLAG}"
 fi
 export TARGET_DIR
 
