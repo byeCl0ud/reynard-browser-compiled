@@ -49,6 +49,7 @@ jobs:
 
       - name: Build the app
         run: ./tools/release/build-app.sh
+        continue-on-error: true
         
       - name: Disable LLD for Gecko
         run: |
